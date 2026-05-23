@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xybishop — Store</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">Xybishop</div>
+  <ul class="nav-links">
+    <li><a href="#" data-section="home">Accueil</a></li>
+    <li><a href="#" data-section="lookbook">Lookbook</a></li>
+    <li><a href="#" data-section="shop">Shop</a></li>
+    <li><a href="#" data-section="partners">Partenaires</a></li>
+    <li><a href="#" data-section="typing">Frappe</a></li>
+    <li><a href="#" data-section="dino">Jeu</a></li>
+    <li><a href="#" data-section="angrybirds">Angry Birds</a></li>
+    <li><a href="#" data-section="yokai">Yokai Watch</a></li>
+  </ul>
+  <button class="nav-cart" id="cartBtn" aria-label="Panier">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 001.94 1.61h9.72a2 2 0 001.94-1.61L23 6H6"/>
+    </svg>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<!-- ═══ HOME ═══ -->
+<section class="page-section active" id="home">
+  <div class="hero">
+    <div class="hero-content">
+      <span class="hero-overline">Collection exclusive</span>
+      <h1 class="hero-title">Xybi<em>shop</em></h1>
+      <p class="hero-body">Le style, la vitesse, l'excellence. Pièces exclusives pour une communauté qui ne transige pas.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" data-section="shop">Voir la collection</button>
+        <button class="btn-outline" data-section="lookbook">Lookbook</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-frame">
+        <img src="assets/images/florentin_casquette.png" alt="Collection Xybishop" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOOKBOOK ═══ -->
+<section class="page-section" id="lookbook">
+  <div class="section-header">
+    <span class="section-overline">Collection</span>
+    <h2>Lookbook</h2>
+    <p>La collection portée</p>
+  </div>
+  <div class="lookbook-grid">
+    <div class="look-card look-tall" onclick="openLightbox(this)">
+      <img src="assets/images/florentin_casquette.png" alt="Florentin Casquette" loading="lazy" />
+      <div class="look-label">MAKE XYBITON GREAT AGAIN</div>
+    </div>
+    <div class="look-col">
+      <div class="look-card" onclick="openLightbox(this)">
+        <img src="assets/images/lilyang_IN.png" alt="Lilyang IN" loading="lazy" />
+        <div class="look-label">In</div>
+      </div>
+      <div class="look-card" onclick="openLightbox(this)">
+        <img src="assets/images/jbzz10-4.png" alt="JBZZ 10-4" loading="lazy" />
+        <div class="look-label">10-4</div>
+      </div>
+    </div>
+    <div class="look-card look-tall" onclick="openLightbox(this)">
+      <img src="assets/images/strano_OUT.png" alt="Strano OUT" loading="lazy" />
+      <div class="look-label">Out</div>
+    </div>
+    <!-- Samo Socks: pleine largeur, hauteur généreuse -->
+    <div class="look-card look-wide" onclick="openLightbox(this)">
+      <img src="assets/images/samo_socks.png" alt="Samo Socks" loading="lazy" />
+      <div class="look-label">mille-pattes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;cursor:zoom-out;">
+  <img id="lightboxImg" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,.5);" />
+  <div style="position:absolute;top:18px;right:22px;color:rgba(255,255,255,.7);font-size:1.4rem;cursor:pointer;line-height:1;" onclick="closeLightbox()">✕</div>
+</div>
+
+<!-- ═══ SHOP ═══ -->
+<section class="page-section" id="shop">
+  <div class="section-header">
+    <span class="section-overline">Boutique</span>
+    <h2>Catalogue</h2>
+    <p>הקולקציה הבלעדית שלנו</p>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- ═══ PARTNERS ═══ -->
+<section class="page-section" id="partners">
+  <div class="section-header">
+    <span class="section-overline">Réseau</span>
+    <h2>Partenaires</h2>
+    <p>Nos projets associés</p>
+  </div>
+  <div class="partners-grid">
+    <a href="https://skwala-monitor.preview.emergentagent.com/" target="_blank" rel="noopener" class="partner-card">
+      <div class="partner-icon">📡</div>
+      <div class="partner-info"><h4>Skwala Monitor</h4><p>Surveillance et monitoring avancé</p></div>
+      <div class="partner-arrow">→</div>
+    </a>
+    <a href="https://xybiton.github.io/xybiton/" target="_blank" rel="noopener" class="partner-card">
+      <div class="partner-icon">⚡</div>
+      <div class="partner-info"><h4>Xybiton</h4><p>Le projet officiel Xybiton</p></div>
+      <div class="partner-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ TYPING ═══ -->
+<section class="page-section" id="typing">
+  <div class="section-header">
+    <span class="section-overline">Mini-jeu</span>
+    <h2>Test de frappe</h2>
+    <p>Améliorez votre frappe en quelques secondes</p>
+  </div>
+  <div class="typing-section-inner">
+    <div class="typing-stats">
+      <div class="stat-box"><span class="stat-val" id="wpmDisplay">0</span><span class="stat-lbl">Wpm</span></div>
+      <div class="stat-box"><span class="stat-val" id="accDisplay">100</span><span class="stat-lbl">Précision</span></div>
+      <div class="stat-box"><span class="stat-val" id="timerDisplay">60</span><span class="stat-lbl">Secondes</span></div>
+    </div>
+    <div class="typing-text-box" id="typingTextBox"></div>
+    <input class="typing-input" id="typingInput" autocomplete="off" spellcheck="false" disabled />
+    <div class="typing-btns">
+      <button class="btn-primary" id="startTyping">▶ Commencer</button>
+      <button class="btn-outline" id="resetTyping">Réinitialiser</button>
+    </div>
+    <div class="typing-result hidden" id="typingResult">
+      <div class="result-wpm" id="resultWpm"></div>
+      <div class="result-cat" id="resultCat"></div>
+      <div class="result-bar-wrap"><div class="result-bar" id="resultBar"></div></div>
+      <div id="confettiZone"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JEU ═══ -->
+<section class="page-section" id="dino">
+  <div class="section-header">
+    <span class="section-overline">Mini-jeux</span>
+    <h2>Jeux</h2>
+    <p>Dash · Espace pour sauter</p>
+  </div>
+  <div class="dino-section-inner">
+
+    <!-- Runner -->
+    <div class="game-label">Dash</div>
+    <div class="game-wrap">
+      <canvas id="dinoCanvas" width="960" height="380"></canvas>
+      <div class="game-overlay" id="gameOverlay">
+        <p id="gameMsg">Appuie sur <strong>Espace</strong> pour jouer</p>
+      </div>
+    </div>
+    <div class="game-scores">
+      <span>Score : <strong id="dinoScore">0</strong></span>
+      <span>Meilleur : <strong id="dinoBest">0</strong></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ANGRY BIRDS ═══ -->
+<section class="page-section" id="angrybirds">
+  <div class="section-header">
+    <span class="section-overline">Mini-jeu</span>
+    <h2>Angry Birds</h2>
+    <p>Le classique — lance tes oiseaux !</p>
+  </div>
+  <div class="dino-section-inner">
+    <div style="display:flex;align-items:center;gap:10px;background:rgba(255,210,0,0.13);border:1px solid rgba(255,200,0,0.35);border-radius:8px;padding:9px 14px;margin-bottom:12px;font-size:0.78rem;color:var(--text,#eee);line-height:1.4;">
+      <span style="font-size:1.1rem;flex-shrink:0;">⚠️</span>
+      <span>Des publicités peuvent apparaître dans le jeu. Il est recommandé d'installer un <strong>bloqueur de pub</strong> (ex&nbsp;: uBlock Origin) avant de jouer. Ne clique pas sur les pubs.</span>
+    </div>
+    <div class="ab2-wrap">
+      <iframe
+        src="https://crazygames-poki.com/embed/angry-birds-classic"
+        class="ab2-frame"
+        allowfullscreen
+        allow="autoplay; fullscreen; gamepad"
+        scrolling="no"
+        title="Angry Birds Classic"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ YOKAI WATCH ═══ -->
+<section class="page-section" id="yokai">
+  <div class="section-header">
+    <span class="section-overline">Anime</span>
+    <h2>Yokai Watch — Toute la serie</h2>
+    <p>Regarde la série directement dans le site</p>
+  </div>
+  <div class="yokai-section-inner">
+
+    <!-- Couverture + infos série -->
+    <div class="yw-hero">
+      <div class="yw-hero-cover">
+        <img src="assets/images/yokai/cover.jpg" alt="Yokai Watch" />
+      </div>
+      <div class="yw-hero-info">
+        <div class="yw-hero-meta">
+          <span class="yw-hero-badge">Anime VF</span>
+          <span class="yw-hero-year">2014</span>
+          <span class="yw-hero-seasons">3 Saisons · 96 Épisodes</span>
+        </div>
+        <h3 class="yw-hero-title">Yo-Kai Watch</h3>
+        <p class="yw-hero-desc">Keita, un collégien ordinaire, découvre une montre magique qui lui permet de voir et d'interagir avec les Yo-kai, des esprits invisibles qui influencent le comportement humain.</p>
+        <div class="yw-season-tabs" id="ywSeasonTabs">
+          <button class="yw-season-tab active" data-season="1">Saison 1 <span>26 ép.</span></button>
+          <button class="yw-season-tab" data-season="2">Saison 2 <span>49 ép.</span></button>
+          <button class="yw-season-tab" data-season="3">Saison 3 <span>21 ép.</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grille d'épisodes (style Netflix) -->
+    <div class="yw-ep-grid" id="episodeGrid"></div>
+
+    <!-- Player -->
+    <div id="yokaiPlayer" class="yokai-player-wrap hidden">
+      <div class="yokai-player-top">
+        <div class="yokai-ep-meta">
+          <span class="yokai-ep-badge" id="yokaiEpBadge">Ép. 1</span>
+          <span class="yokai-ep-title" id="yokaiEpTitle">Épisode 1</span>
+        </div>
+        <button class="yokai-player-close" id="closeYokaiPlayer">✕ Fermer</button>
+      </div>
+      <div class="yokai-sources" id="yokaiSources"></div>
+      <div class="yokai-frame-wrap" id="yokaiFrameWrap"></div>
+      <div class="yokai-player-footer">Si un lecteur ne charge pas, essaie le suivant ou la source suivante.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PRODUCT MODAL ═══ -->
+<div class="modal-overlay" id="productModal">
+  <div class="product-modal-box">
+    <button class="modal-close" id="closeProductModal">✕</button>
+    <div class="pm-gallery">
+      <div class="pm-main-img-wrap"><img id="pmMainImg" src="" alt="" /></div>
+      <div class="pm-thumbs" id="pmThumbs"></div>
+    </div>
+    <div class="pm-info">
+      <div class="pm-label" id="pmLabel"></div>
+      <h3 class="pm-name" id="pmName"></h3>
+      <p class="pm-desc" id="pmDesc"></p>
+      <div class="pm-price" id="pmPrice"></div>
+      <button class="btn-primary btn-add-modal" id="pmAddBtn">Ajouter au panier</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CART ═══ -->
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h3>Panier</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total : <strong><span id="cartTotal">0.00</span> €</strong></div>
+      <button class="btn-primary btn-pay" id="payBtn">Payer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PAY MODAL ═══ -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <div class="modal-icon">🚫</div>
+    <h3>Livraison indisponible</h3>
+    <p>Ce produit est actuellement disponible uniquement pour la région Israël.<br><br>Nous ne proposons pas de livraison vers la France pour le moment.</p>
+    <button class="btn-primary" id="closePayModal">Fermer</button>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/typing.js"></script>
+<script src="js/dino.js"></script>
+<script src="js/yokai.js"></script>
+<script src="js/main.js"></script>
+<script>
+/* ── Lightbox ── */
+function openLightbox(card) {
+  const img = card.querySelector('img');
+  if (!img) return;
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = img.src;
+  lb.style.display = 'flex';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
